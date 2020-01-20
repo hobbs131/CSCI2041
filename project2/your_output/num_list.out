@@ -1,0 +1,30 @@
+OpenParenToken
+NumberToken 1
+NumberToken 2
+NumberToken 3
+NumberToken 4
+NumberToken 5
+CloseParenToken
+OpenParenToken
+OpenParenToken
+NumberToken 1
+NumberToken 2
+CloseParenToken
+OpenParenToken
+NumberToken 3
+NumberToken 4
+CloseParenToken
+OpenParenToken
+OpenParenToken
+NumberToken 5
+CloseParenToken
+CloseParenToken
+CloseParenToken
+OpenParenToken
+NumberToken 12345678
+NumberToken 1234
+OpenParenToken
+NumberToken 12345
+CloseParenToken
+CloseParenToken
+EndToken

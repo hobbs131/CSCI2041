@@ -1,0 +1,112 @@
+(define solve
+ (lambda (variable left-side right-side)
+  (if
+   (is-inside variable left-side)
+   (solving variable left-side right-side)
+   (solving variable right-side left-side))) )
+
+(define solving
+ (lambda (variable left-side right-side)
+  (if
+   (= variable left-side)
+   (list (quote =) left-side right-side)
+   (if
+    (= (operator left-side) (quote +))
+    (solving-add variable left-side right-side)
+    (if
+     (= (operator left-side) (quote -))
+     (solving-subtract variable left-side right-side)
+     (if
+      (= (operator left-side) (quote *))
+      (solving-multiply variable left-side right-side)
+      (if
+       (= (operator left-side) (quote /))
+       (solving-divide variable left-side right-side)
+       (error))))))) )
+
+(define solving-add
+ (lambda (variable left-side right-side)
+  (if
+   (is-inside variable (left left-side))
+   (solving variable
+    (left left-side)
+    (list (quote -) right-side (right left-side)))
+   (solving variable
+    (right left-side)
+    (list (quote -) right-side (left left-side))))) )
+
+(define solving-subtract
+ (lambda (variable left-side right-side)
+  (if
+   (is-inside variable (left left-side))
+   (solving variable
+    (left left-side)
+    (list (quote +) (right left-side) right-side))
+   (solving variable
+    (right left-side)
+    (list (quote -) (left left-side) right-side)))) )
+
+(define solving-multiply
+ (lambda (variable left-side right-side)
+  (if
+   (is-inside variable (left left-side))
+   (solving variable
+    (left left-side)
+    (list (quote /) right-side (right left-side)))
+   (solving variable
+    (right left-side)
+    (list (quote /) right-side (left left-side))))) )
+
+(define solving-divide
+ (lambda (variable left-side right-side)
+  (if
+   (is-inside variable (left left-side))
+   (solving variable
+    (left left-side)
+    (list (quote *) (right left-side) right-side))
+   (solving variable
+    (right left-side)
+    (list (quote /) (left left-side) right-side)))) )
+
+(define is-inside
+ (lambda (variable expression)
+  (if
+   (atom expression)
+   (= variable expression)
+   (if
+    (is-inside variable (left expression))
+    t
+    (is-inside variable (right expression))))) )
+
+(define operator
+ (lambda (expression)
+  (car expression)) )
+
+(define left
+ (lambda (expression)
+  (car (cdr expression))) )
+
+(define right
+ (lambda (expression)
+  (car (cdr (cdr expression)))) )
+
+(is-inside (quote x) (quote x))
+(is-inside (quote x) (quote y))
+(is-inside (quote x) (quote (+ x y)))
+(is-inside (quote x) (quote (+ a b)))
+(is-inside (quote +) (quote (+ a b)))
+(is-inside (quote x) (quote (+ (* m x) b)))
+
+(solve (quote x) (quote (+ a x)) (quote c))
+(solve (quote x) (quote (+ x b)) (quote c))
+(solve (quote x) (quote (- a x)) (quote c))
+(solve (quote x) (quote (- x b)) (quote c))
+(solve (quote x) (quote c) (quote (* a x)))
+(solve (quote x) (quote (* x b)) (quote c))
+(solve (quote x) (quote (/ a x)) (quote c))
+(solve (quote x) (quote (/ x b)) (quote c))
+(solve (quote y) (quote y) (quote (+ (* m x) b)))
+(solve (quote x) (quote y) (quote (+ (* m x) b)))
+(solve (quote a) (quote (+ b c)) (quote (* d (- (/ a e) f))))
+
+end

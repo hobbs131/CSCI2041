@@ -1,0 +1,14 @@
+(define n
+  (+ 4 5))
+
+(define m
+  (if (= n 4)
+    1
+    (* n 4)))
+
+(define -
+  (lambda (m n)
+    (- m n)
+  )
+)
+

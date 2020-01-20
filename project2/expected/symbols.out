@@ -1,0 +1,44 @@
+OpenParenToken
+SymbolToken define
+SymbolToken n
+OpenParenToken
+SymbolToken +
+NumberToken 4
+NumberToken 5
+CloseParenToken
+CloseParenToken
+OpenParenToken
+SymbolToken define
+SymbolToken m
+OpenParenToken
+SymbolToken if
+OpenParenToken
+SymbolToken =
+SymbolToken n
+NumberToken 4
+CloseParenToken
+NumberToken 1
+OpenParenToken
+SymbolToken *
+SymbolToken n
+NumberToken 4
+CloseParenToken
+CloseParenToken
+CloseParenToken
+OpenParenToken
+SymbolToken define
+SymbolToken -
+OpenParenToken
+SymbolToken lambda
+OpenParenToken
+SymbolToken m
+SymbolToken n
+CloseParenToken
+OpenParenToken
+SymbolToken -
+SymbolToken m
+SymbolToken n
+CloseParenToken
+CloseParenToken
+CloseParenToken
+EndToken

@@ -1,0 +1,32 @@
+OpenParenToken
+SymbolToken define
+SymbolToken !
+OpenParenToken
+SymbolToken lambda
+OpenParenToken
+SymbolToken n
+CloseParenToken
+OpenParenToken
+SymbolToken if
+OpenParenToken
+SymbolToken =
+SymbolToken n
+NumberToken 0
+CloseParenToken
+NumberToken 1
+OpenParenToken
+SymbolToken *
+SymbolToken n
+OpenParenToken
+SymbolToken !
+OpenParenToken
+SymbolToken -
+SymbolToken n
+NumberToken 1
+CloseParenToken
+CloseParenToken
+CloseParenToken
+CloseParenToken
+CloseParenToken
+CloseParenToken
+EndToken
